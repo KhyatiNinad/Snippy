@@ -1,0 +1,579 @@
+﻿body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, Verdana;
+  background: #f1f1f1;
+  color: rgba(0, 0, 0, 1);
+  margin: 0px;
+}
+
+@-webkit-keyframes ink-visual-show {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes ink-visual-show {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-webkit-keyframes ink-visual-hide {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes ink-visual-hide {
+  to {
+    opacity: 0;
+  }
+}
+button {
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+  -webkit-transition-timing-function: cubic-bezier(0.25, 0.5, 0.5, 1);
+          transition-timing-function: cubic-bezier(0.25, 0.5, 0.5, 1);
+  position: relative;
+  padding: 0;
+  height: auto;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.73);
+}
+button:active {
+  -webkit-transition-duration: 0.1s;
+          transition-duration: 0.1s;
+}
+button .btn {
+  position: relative;
+  padding: 8px 16px;
+  z-index: 2;
+}
+
+button .modalbtn {
+  position: relative;
+  padding: 2px;
+  z-index: 2;
+}
+
+button .ink-visual-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  z-index: 1;
+}
+button .ink-visual-container .ink-visual-static {
+  position: static;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+}
+button .ink-visual-container .ink-visual {
+  -webkit-animation: ink-visual-show 0.25s cubic-bezier(0.25, 0.5, 0.5, 1);
+          animation: ink-visual-show 0.25s cubic-bezier(0.25, 0.5, 0.5, 1);
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 1;
+  z-index: -1;
+}
+button .ink-visual-container .ink-visual.hide {
+  -webkit-animation: ink-visual-show 0.25s cubic-bezier(0.25, 0.5, 0.5, 1), ink-visual-hide 0.5s cubic-bezier(0.25, 0.5, 0.5, 1);
+          animation: ink-visual-show 0.25s cubic-bezier(0.25, 0.5, 0.5, 1), ink-visual-hide 0.5s cubic-bezier(0.25, 0.5, 0.5, 1);
+}
+button .ink-visual-container .ink-visual.hide.shown {
+  -webkit-animation: ink-visual-show 0.25s cubic-bezier(0.25, 0.5, 0.5, 1), ink-visual-hide 0.15s cubic-bezier(0.25, 0.5, 0.5, 1);
+          animation: ink-visual-show 0.25s cubic-bezier(0.25, 0.5, 0.5, 1), ink-visual-hide 0.15s cubic-bezier(0.25, 0.5, 0.5, 1);
+}
+button.raised, button.float {
+  -webkit-transition-property: box-shadow, background;
+  transition-property: box-shadow, background;
+  background-color: #303F9F;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25), 0px 0px 2px rgba(0, 0, 0, 0.125);
+  color: white;
+}
+button.raised:hover, button.float:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25), 0px 0px 4px rgba(0, 0, 0, 0.125);
+  background-color: #3F51B5;
+}
+button.raised:active, button.float:active {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25), 0px 0px 1px rgba(0, 0, 0, 0.125);
+  background-color: #1A237E;
+}
+html.ink-btn button.raised:active, html.ink-btn button.float:active {
+  background-color: #3F51B5;
+}
+button.raised .ink-visual, button.float .ink-visual {
+  background-color: #1A237E;
+}
+button.raised.edge .ink-visual-static, button.float.edge .ink-visual-static {
+  box-shadow: 0 1px 1px 0 rgba(255, 255, 255, 0.5) inset, 0 -1px 1px 0 rgba(0, 0, 0, 0.25) inset;
+}
+button.flat {
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  background: none;
+  color: #169c16;
+}
+button.flat:active {
+  background-color: #bfbfbf;
+}
+html.ink-btn button.flat:active {
+  background: none;
+}
+button.flat .ink-visual {
+  background-color: #bfbfbf;
+}
+button.float {
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25), 0px 0px 2px rgba(0, 0, 0, 0.125);
+  background-color: #f98006;
+}
+button.float:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25), 0px 0px 4px rgba(0, 0, 0, 0.125);
+  background-color: #fa9129;
+}
+button.float:active {
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25), 0px 0px 1px rgba(0, 0, 0, 0.125);
+  background-color: #ea7806;
+}
+html.ink-btn button.float:active {
+  background-color: #fa9129;
+}
+button.float .ink-visual-container {
+  border-radius: 50%;
+  -webkit-clip-path: circle();
+          clip-path: circle();
+}
+button.float .ink-visual-static {
+  border-radius: 50%;
+}
+button.float .ink-visual {
+  background: #ea7806;
+}
+
+.card {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  margin: 4px;
+  padding: 4px;
+  background: white;
+  border-radius: 2px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25), 0px 0px 2px rgba(0, 0, 0, 0.125);
+}
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6, .card p {
+  margin: 0;
+  padding: 0;
+}
+.card .hr {
+  margin: 4px -4px 3px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.right {
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+}
+
+
+.nav {
+    width: 100%;
+    background: #d1d1d1;
+    height: 60px;
+    display: inline-block;
+    margin: 0px;
+    padding: 2px;
+    border-top: 4px double #007acc;
+}
+ 
+.nav li {
+    float: left;
+    list-style-type: none;
+    position: relative;
+}
+.nav li a {
+    font-size: 16px;
+    color: white;
+    display: block;
+    line-height: 60px;
+    padding: 0 26px;
+    text-decoration: none;
+    border-left: 1px solid #2e2e2e;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.nav li a:hover {
+    background-color: #2e2e2e;
+}
+ 
+#settings a {
+    padding: 18px;
+    height: 24px;
+    font-size: 10px;
+    line-height: 24px;
+}
+
+.navbuttons {
+    width: 15%;
+    margin: 0 auto;
+
+    text-align:right;
+}
+
+.home {
+    width: 15%;
+    margin: 0px auto;
+    text-align:center;
+}
+
+.topmargin
+{
+    margin: 8px;
+}
+
+#search {
+    width: 40%;
+    margin: 0px;
+}
+
+#search_text{
+    width: 90%;
+    padding: 15px 0 15px 20px;
+    font-size: 16px;
+    border: 0 none;
+    height: 52px;
+    margin-right: 0;
+    color: white;
+    outline: none;
+    background: #303F9F;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+}
+#search_text:focus {
+    background: #3F51B5;
+}
+#search_button {
+    border: 0 none;
+    background: #1A237E url(../images/search.png) center no-repeat;
+    width: 10%;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 52px;
+    cursor: pointer;
+}
+
+#options a{
+    border-left: 0 none;
+}
+#options>a {
+    background-image: url(triangle.png);
+    background-position: 85% center;
+    background-repeat: no-repeat;
+    padding-right: 42px;
+}
+.subnav {
+    visibility: hidden;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 200px;
+    height: auto;
+    opacity: 0;
+    transition: all 0.1s;
+    background: #232323;
+}
+.subnav li {
+    float: none;
+}
+.subnav li a {
+    border-bottom: 1px solid #2e2e2e;
+}
+#options:hover .subnav {
+    visibility: visible;
+    top: 100%;
+    opacity: 1;
+}
+
+
+
+
+* { box-sizing:border-box; }
+
+/* basic stylings ------------------------------------------ */
+.container 		{ 
+  width:600px; 
+  margin:30px auto 0; 
+  display:block; 
+  background:#FFF;
+  padding:20px 50px 10px 50px;
+  max-height: 600px;
+  text-align: left;
+
+  overflow: auto;
+}
+
+.containerheader {
+    width: 100%;
+    font-weight: bold;
+    color: #FFF;
+    background-color: #1A237E;
+    padding: 10px;
+}
+
+h2 		 { 
+  text-align:center; 
+  margin-bottom:50px; 
+}
+h2 small { 
+  font-weight:normal; 
+  color:#888; 
+  display:block; 
+}
+.footer 	{ text-align:center; }
+.footer a  { color:#53B2C8; }
+
+/* form starting stylings ------------------------------- */
+.group 			  { 
+  position:relative; 
+  margin-bottom:35px; 
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:100%;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#1A237E;
+}
+
+.single		{
+  top:-20px;
+  font-size:14px;
+  color:#1A237E;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:100%; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#1A237E; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#1A237E; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#1A237E; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#1A237E; }
+  to 	{ width:0; background:transparent; }
+}
+
+.editorparent
+{
+    width: 100%;
+    height: 200px;
+    border: 1px solid #1A237E;
+}
+.editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width:100%;
+        height: 100%;
+    }
+
+.background {
+    border: 0 none;
+    min-height: 500px;
+    background:  url(../images/background.png) center no-repeat;
+    text-align: center;
+}
+
+.clipboardbtn{
+    cursor: pointer;
+    background-color: #FFF;
+}
+
+
+.copied::after {
+  position: absolute;
+  top: 0%;
+  right: 110%;
+  display: block;
+  content: "copied";
+  font-size: 0.75em;
+  padding: 2px 3px;
+  color: #fff;
+  background-color: #303F9F;
+  border-radius: 3px;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: showcopied 1.5s ease;
+}
+
+.errorcopied::after {
+  position: absolute;
+  top: 0%;
+  right: 110%;
+  display: block;
+  content: "copied";
+  font-size: 0.75em;
+  padding: 2px 3px;
+  color: #fff;
+  background-color: #9d0000;
+  border-radius: 3px;
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: showcopied 1.5s ease;
+}
+
+
+@keyframes showcopied {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.cssload-loader-outer {
+    z-index: 10;
+		bottom: 0;
+		left: 0px;
+		margin: auto;
+		position: absolute;
+		right: 0px;
+		top: 0px;
+        background-color: #C5CAE9;
+        opacity: 0.8;
+}
+.cssloader-text
+{
+    position: absolute;
+  top: calc(50% + 65px);
+  margin: 0px auto;
+  text-align: center;
+    left: 0px;
+    right: 0px;
+}
+
+.errorMessage
+{
+    font-weight: bold;
+    color: #CC0000;
+}

@@ -1,0 +1,77 @@
+.drawer
+{
+
+	border-top:1px solid #8e24aa;
+	border-radius:5px;
+}
+.accordion-item
+{
+}
+.accordion-item-active .accordion-header
+{
+    background: linear-gradient(60deg, #ab47bc, #8e24aa);
+	transition:.25s;
+}
+.accordion-item-active .accordion-header-icon
+{
+	color:#fff;
+}
+.accordion-item-active .accordion-header h1
+{
+	color:#fff;
+}
+.accordion-header
+{
+    background: linear-gradient(60deg, #f2f2f2, #efc3fb);
+	padding:12px;
+	cursor:pointer;
+	border-right:1px solid #8e24aa;
+	border-left:1px solid #8e24aa;
+	border-bottom:1px solid #8e24aa;
+	border-radius:5px;
+	min-height:42px;
+	transition:.25s;
+}
+.accordion-header h1
+{
+	float:left;
+	font-size:18px;
+	font-weight: normal;
+	margin:0;
+	line-height: 1.3em;
+	color:#212121;
+}
+.accordion-content
+{
+	border-left:1px solid #8e24aa;
+	border-right:1px solid #8e24aa;
+	border-top:1px solid #8e24aa;
+	border-bottom:1px solid #8e24aa;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display:none;
+	padding:0px;
+	color:#212121;
+	background:#FFF;
+	font-size:15px;
+	line-height:1.45em;
+}
+.accordion-content p
+{
+	margin:0;
+	margin-bottom: 3px;
+}
+.accordion-header-icon
+{
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+	float:right;color:#8e24aa;
+	font-size: 15px;
+	vertical-align: middle;
+}
+.accordion-header-icon.accordion-header-icon-active
+{
+	-webkit-transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+	transform:rotate(180deg);
+	color:#fff;
+}
